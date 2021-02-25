@@ -43,4 +43,3 @@ Describe any challenges encountered while building the app.
 
 
 ### Notes
-No matter what I did, could not get movie posters to work
