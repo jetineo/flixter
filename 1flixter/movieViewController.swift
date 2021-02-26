@@ -41,6 +41,16 @@ class movieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        
+        let detailsVC = segue.destination as! movieDetailViewController
+        
+        detailsVC.movie = movie
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -55,7 +65,7 @@ class movieViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.titleLabel.text = title
         cell.synopsisLabel.text = synopsis
         
-        let baseURL = "http://image.tmdb.org/t/p/w185"
+        let baseURL = "https://image.tmdb.org/t/p/w185"
         let posterPath = movie["poster_path"] as! String
         let posterURL = URL(string: baseURL + posterPath)
         
